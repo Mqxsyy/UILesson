@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<!-- proovi see rida välja kommenteerida ja vaata, mis juhtub -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<style>
+			input {
+				width: 100%;
+				box-sizing: border-box;
+				border: 1px solid #b9b9b9;
+				border-radius: 2px;
+				padding: 8px 10px;
+			}
+
+			input:focus {
+				outline-width: 1px;
+				outline-color: #838383;
+			}
+
+			textarea {
+				width: 100%;
+				box-sizing: border-box;
+				border: 1px solid #b9b9b9;
+				border-radius: 2px;
+				padding: 8px 10px;
+			}
+
+			h2 {
+				margin-top: -5px;
+				text-align: center;
+			}
+
+			.form-row label {
+				width: 100%;
+				display: flex;
+				justify-content: flex-end;
+				align-items: center;
+				padding-right: 10px;
+				box-sizing: content-box;
+			}
+
+			.container {
+				margin: auto;
+				margin-top: 30px;
+				width: 50%;
+				display: flex;
+				flex-direction: column;
+				background-color: #ebfffc;
+				border: 5px solid #d7fff9;
+				border-radius: 15px;
+				padding: 25px;
+			}
+
+			.form-row {
+				display: flex;
+				padding: 5px;
+			}
+
+			@media (min-width: 980px) {
+				.form-row {
+					flex-direction: row;
+				}
+
+				.form-row label {
+					justify-content: flex-end;
+				}
+			}
+
+			@media (max-width: 979px) {
+				.form-row {
+					flex-direction: column;
+				}
+
+				.form-row label {
+					justify-content: flex-start;
+				}
+			}
+		</style>
+		<title>Paigutamine 2: Skaleeruv vorm</title>
+	</head>
+	<body>
+		<form action="" method="get" class="container">
+			<h2>Paigutamine 2: Skaleeruv vorm</h2>
+			<div class="form-row">
+				<label for="name">Nimi</label>
+				<input type="text" name="name" id="name" placeholder="Nimi" required />
+			</div>
+			<div class="form-row" class="error">
+				<label for="email">Email</label>
+				<input
+					type="email"
+					name="email"
+					id="email"
+					placeholder="Email"
+					required
+				/>
+			</div>
+			<div class="form-row">
+				<label for="b-day">Sünnikuupäev</label>
+				<input
+					type="date"
+					id="b-day"
+					name="b-day"
+					value="2000-01-01"
+					min="1991-01-02"
+					max="2021-12-31"
+					required
+				/>
+			</div>
+			<div class="form-row">
+				<label for="phone">Telefoninumber</label>
+				<input type="tel" id="phone" name="phone" required />
+			</div>
+			<div class="form-row">
+				<label for="story">Lisa</label>
+				<textarea id="story" name="story" placeholder="..."></textarea>
+			</div>
+			<div class="form-row">
+				<label for="color">Värv</label>
+				<input type="color" id="color" name="color" value="#ff0000" />
+			</div>
+			<div class="form-row">
+				<label for="number">Number</label>
+				<input type="number" id="number" name="number" min="0" max="10" />
+			</div>
+			<div class="form-row">
+				<label for="range">Vahemik</label>
+				<input type="range" id="range" name="range" min="0" max="10" />
+			</div>
+			<div class="form-row">
+				<label for="time">Aeg</label>
+				<input type="time" id="time" name="time" min="00:00" max="23:59" />
+			</div>
+			<div class="form-row">
+				<label for="url">URL</label>
+				<input type="url" id="url" name="url" placeholder="https://" />
+			</div>
+			<div class="form-row">
+				<input class="submit-button" type="submit" value="Saada" />
+			</div>
+		</form>
+	</body>
+</html>

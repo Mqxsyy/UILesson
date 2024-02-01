@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Dictionary</title>
+		<link rel="stylesheet" href="Dictionary.css" />
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
+
+			body {
+				margin: 0 0 1rem 0;
+				font-family: "Montserrat", sans-serif;
+			}
+
+			header {
+				text-align: center;
+				margin-bottom: 1.5rem;
+				padding: 2rem;
+				box-shadow: 0px 2px 6px 4px #aaaaaa;
+			}
+
+			header > h1 {
+				margin: 0;
+			}
+
+			main {
+				width: 75%;
+				margin: auto;
+			}
+
+			summary {
+				font-weight: 500;
+				list-style: none;
+				cursor: pointer;
+				margin: 0.25rem 0.25rem 0 0.25rem;
+				padding: 1rem;
+				border: 2px solid #dddddd;
+				border-radius: 0.5rem;
+			}
+
+			details {
+				position: relative;
+			}
+
+			li {
+				margin: 0.5rem;
+			}
+
+			p + img {
+				margin-top: 1rem;
+				width: 30%;
+			}
+
+			.description {
+				border: 2px solid #dddddd;
+				border-top: 0px;
+				margin: 0 1rem 1rem 1rem;
+				padding: 1rem;
+				border-radius: 0 0 0.5rem 0.5rem;
+			}
+
+			.arrow-up {
+				opacity: 0.5;
+			}
+
+			summary:hover .arrow-up {
+				opacity: 1;
+			}
+
+			.arrow-up img,
+			.arrow-down img {
+				position: absolute;
+				top: 1.25rem;
+				right: 1.1rem;
+				background-color: white;
+				margin: 0;
+				width: 28px;
+			}
+
+			.tooltip .tooltip-text {
+				visibility: hidden;
+				background-color: rgb(225, 225, 225);
+				border: 1px solid black;
+				text-align: center;
+				padding: 5px;
+				margin-left: 5px;
+				border-radius: 6px;
+			}
+
+			.tooltip:hover .tooltip-text {
+				visibility: visible;
+			}
+
+			.switch {
+				position: relative;
+				display: inline-block;
+				width: 60px;
+				height: 34px;
+			}
+
+			.switch input {
+				opacity: 0;
+				width: 0;
+				height: 0;
+			}
+
+			.slider {
+				position: absolute;
+				cursor: pointer;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background-color: #ccc;
+				-webkit-transition: 0.4s;
+				transition: 0.4s;
+			}
+
+			.slider:before {
+				position: absolute;
+				content: "";
+				height: 26px;
+				width: 26px;
+				left: 4px;
+				bottom: 4px;
+				background-color: white;
+				-webkit-transition: 0.4s;
+				transition: 0.4s;
+			}
+
+			input:checked + .slider {
+				background-color: #2196f3;
+			}
+
+			input:focus + .slider {
+				box-shadow: 0 0 1px #2196f3;
+			}
+
+			input:checked + .slider:before {
+				-webkit-transform: translateX(26px);
+				-ms-transform: translateX(26px);
+				transform: translateX(26px);
+			}
+
+			.slider.round {
+				border-radius: 34px;
+			}
+
+			.slider.round:before {
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Erialane sõnaraamat</h1>
+		</header>
+		<main>
+			<details>
+				<summary>
+					Charset (märgistik)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>Määrab millist tähtede kogumit HTML dokument kasutab.</p>
+					<p>Näiteks:</p>
+					<ul>
+						<li>
+							ASCII (sisaldab Ladina tähestiku tähti, numbreid ja mõndasid
+							erimärke)
+						</li>
+						<li>UTF-8 (sisaldab kõiki maailma tähti, numbreid ja erimärke)</li>
+					</ul>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Viewport (vaateaken)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>Kasutaja seadmes nähtav veebilehe ala.</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Root element (juurelement)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>HTML-dokumendi kõrgeima taseme element, tavaliselt &lthtml&gt.</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Sidebar (külgriba)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						Vertikaalne veerg, mida sageli kasutatakse veebilehel
+						navigeerimiseks või lisateabe jaoks.
+					</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Padding (täidis)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>Ala elemendi sisu ja selle äärise vahel.</p>
+					<img src="./MarginPaddingContent.jpg" alt="" />
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Margin (veeris)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>Elemendi äärisest väljaspool asuv tühi ala.</p>
+					<img src="./MarginPaddingContent.jpg" alt="" />
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Grid layout (võrgustikukujundus)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						CSS-i paigutussüsteem keerukate ja reageerivate ruudustikupõhiste
+						paigutuste loomiseks.
+					</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Inline element (reasisene element)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						HTML element, mis ei alga uuelt realt ning kasutab ainult vajalikku
+						laiust.
+					</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Block element (plokk element)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						HTML element, mis algab uuelt realt ning kasutab kogu saadaoleva
+						laiuse.
+					</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Border-box (piirikast)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						Kasti suuruse väärtus, mis sisaldab täidist ja äärist elemendi
+						kogulaiuses ja kõrguses.
+					</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Padding-box (täidiskast)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						Kasti suuruse väärtus, mis sisaldab ainult täidist elemendi
+						kogulaiuses ja kõrguses.
+					</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Wireframe (traadiraamistik)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						Visuaalne juhend, m is esindab veebilehe või liidese põhistruktuuri.
+					</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Content stacking (sisu kuhjamine)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>Elementide paigutus veebilehel kihtidena.</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Shorthand (kiirkiri)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>Lühike viis CSS-i omaduste kirjutamiseks ühe omaduse abil.</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Media query (mediapäring)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						CSS-i funktsioon, mis võimaldab stiilide rakendamist sõltuvalt
+						seadme omadustest.
+					</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Hover (hõljuma)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						Olek, kus kasutaja hõljutab kursorit interaktiivse elemendi kohal.
+					</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Scroll (kerima)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>Sisu liigutamine ületäitunud konteineris.</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Hypertext (hüpertekst)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>Tekst, mis sisaldab viiteid.</p>
+					<p>
+						Näiteks:
+						<a href="https://et.wikipedia.org/wiki/H%C3%BCpertekst"
+							>mis on hüpertekst?</a
+						>
+					</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Hyperweb (hüperveeb)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>Omavahel täiustatud või ühendatud veebikeskkond.</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Semantic markup (semantiline märgistus)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						HTML-märgendite kasutamine, mis annavab edasi neis sisalduva sisu
+						tähendust.
+					</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Input (sisend)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>Interaktiivne element, kus kasutajda saavad andmeid sisestada.</p>
+					<label>Tekstisisend:</label>
+					<input type="text" />
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Disabled (keelatud)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>Elemendi olek, kus element ei ole interaktiivne.</p>
+					<label>Keelatud tekstisisend:</label>
+					<input type="text" disabled />
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Checkbox (märkeruut)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						Kasutajaliidese element, mis võimaldab kasutajatel valikut valida ja
+						tühistada.
+					</p>
+					<label>Kas oled nõus: </label>
+					<input type="checkbox" />
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Radio buttons (valikunupud)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						Kasutajaliidese elementide kogum, kus saab korraga valida ainult ühe
+						antud valikutest.
+					</p>
+					<input type="radio" name="example-radio-buttons" />
+					<label>Valik 1</label><br />
+					<input type="radio" name="example-radio-buttons" />
+					<label>Valik 2</label><br />
+					<input type="radio" name="example-radio-buttons" />
+					<label>Valik 3</label>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Dropdown select (rippmenüü valik)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						Kasutajaliidese element, mis võimaldab kasutajatel valida rippmenüüs
+						olevate valikute hulgast.
+					</p>
+					<label for="example-radio-buttons">Tee enda valik:</label>
+
+					<select name="example-radio-buttons">
+						<option>Valik 1</option>
+						<option>Valik 2</option>
+						<option>Valik 3</option>
+					</select>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Toggle switch (lülituslüliti)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>Kasutajaliidese element, mida saab sisse ja välja lülitada.</p>
+					<label class="switch">
+						<input type="checkbox" />
+						<span class="slider round"></span>
+					</label>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Slider (liugur)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						Kasutajaliidese element, mis võimaldab kasutajatel valida
+						vahemikust.
+					</p>
+					<input type="range" min="1" max="100" value="50" />
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Tooltip (viipemärkus)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						Väike hüpikaken, mis annab lisateavet kui kursorit elemendi kohal
+						hõljutada.
+					</p>
+					<div class="tooltip">
+						Hõljuta siin, et näha viipemärkust.
+						<span class="tooltip-text">See on viipemärkus.</span>
+					</div>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					Autocomplete (automaatne täitmine)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>
+						Funktsioon, mis ennustab ja soovitab kasutajal andmete sisestamisel
+						võimalikke andmeid.
+					</p>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+			<details>
+				<summary>
+					UI library (kasutajaliidese raamatukogu)
+					<div class="arrow-up">
+						<img src="./UpArrow.png" alt="" />
+					</div>
+				</summary>
+				<div class="description">
+					<p>Eelkujundatud kasutajaliidese komponentide ja elementide kogu.</p>
+					<p>Näiteks:</p>
+					<ul>
+						<li>Bootstrap</li>
+						<li>Tailwind CSS</li>
+					</ul>
+				</div>
+				<div class="arrow-down">
+					<img src="./DownArrow.png" alt="" />
+				</div>
+			</details>
+		</main>
+	</body>
+</html>

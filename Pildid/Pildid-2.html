@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Pildid 3: SVG maja</title>
+	</head>
+
+	<body>
+		<svg width="800px" height="800px">
+			<defs>
+				<linearGradient
+					id="groundGradient"
+					x1="0%"
+					y1="0%"
+					x2="0%"
+					y2="100%"
+					spreadMethod="pad"
+				>
+					<stop offset="0%" stop-color="#228B22" stop-opacity="1" />
+					<stop offset="100%" stop-color="#006400" stop-opacity="1" />
+				</linearGradient>
+				<linearGradient
+					id="skyGradient"
+					x1="0%"
+					y1="0%"
+					x2="0%"
+					y2="100%"
+					spreadMethod="pad"
+				>
+					<stop offset="0%" stop-color="#ADDFFF" stop-opacity="1" />
+					<stop offset="100%" stop-color="#5CB3FF" stop-opacity="1" />
+				</linearGradient>
+				<radialGradient id="sunGradient">
+					<stop offset="0%" stop-color="#FFFF00" />
+					<stop offset="100%" stop-color="#FDBD01" />
+				</radialGradient>
+			</defs>
+
+			<!-- Sky -->
+			<rect
+				x="0"
+				y="0"
+				height="60%"
+				width="100%"
+				style="fill: url(#skyGradient)"
+			></rect>
+
+			<!-- Ground -->
+			<rect
+				x="0"
+				y="60%"
+				height="40%"
+				width="100%"
+				style="fill: url(#groundGradient)"
+			></rect>
+
+			<!-- Roof -->
+			<!-- 38%,45% ; 50%,35% ; 62%,45%  -->
+			<polyline
+				points="304,360 400,280 496,360"
+				style="fill: yellow"
+			></polyline>
+
+			<!-- Wall -->
+			<rect x="40%" y="45%" height="15%" width="20%" style="fill: red"></rect>
+
+			<!-- Window -->
+			<rect
+				x="42%"
+				y="48.5%"
+				height="8%"
+				width="7%"
+				style="fill: paleturquoise; stroke: white; stroke-width: 5"
+			></rect>
+
+			<!-- Door -->
+			<rect
+				x="52%"
+				y="49.9%"
+				height="10%"
+				width="6%"
+				style="fill: rgb(83, 23, 4); stroke: black; stroke-width: 0.2%"
+			></rect>
+
+			<!-- Door knob -->
+			<circle cx="53%" cy="56%" r="0.5%"></circle>
+
+			<!-- Sun -->
+			<circle cx="80%" cy="12%" r="60" style="fill: url(#sunGradient)">
+				<animate
+					id="one"
+					attributeName="r"
+					from="60"
+					to="70"
+					dur="4s"
+					begin="0s; two.end"
+				/>
+				<animate
+					id="two"
+					attributeName="r"
+					from="70"
+					to="60"
+					dur="4s"
+					begin="one.end"
+				/>
+			</circle>
+
+			<!-- Clouds -->
+			<circle cx="290" cy="150" r="50" style="fill: white">
+				<animate
+					attributeName="cx"
+					from="-160"
+					to="850"
+					dur="30s"
+					repeatCount="indefinite"
+				/>
+			</circle>
+			<circle cx="350" cy="125" r="65" style="fill: white">
+				<animate
+					attributeName="cx"
+					from="-110"
+					to="900"
+					dur="30s"
+					repeatCount="indefinite"
+				/>
+			</circle>
+			<circle cx="400" cy="135" r="60" style="fill: white">
+				<animate
+					attributeName="cx"
+					from="-60"
+					to="950"
+					dur="30s"
+					repeatCount="indefinite"
+				/>
+			</circle>
+
+			<!-- Cow -->
+			<image
+				href="../Resources/WalkingCat.png"
+				x="10%"
+				y="53%"
+				height="10%"
+				width="6%"
+			>
+				<animate
+					id="catOne"
+					attributeName="x"
+					from="-10%"
+					to="53%"
+					dur="5s"
+					begin="0s; catThree.end"
+				/>
+				<animate
+					id="catTwo"
+					attributeName="x"
+					from="-10%"
+					to="-10%"
+					dur="1s"
+					begin="catOne.end"
+				/>
+				<animate
+					id="catThree"
+					attributeName="x"
+					from="53%"
+					to="110%"
+					dur="5s"
+					begin="catTwo.end"
+				/>
+			</image>
+		</svg>
+	</body>
+</html>

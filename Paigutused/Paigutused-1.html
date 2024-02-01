@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Paigutamine 1</title>
+		<style>
+			/* 
+        Tee body elemendil kõik font elemendi stiilid 
+        shorthandiga üherealiseks
+        font shorhand docs: https://developer.mozilla.org/en-US/docs/Web/CSS/font 
+        */
+			body {
+				margin: 0;
+				font: 1.4rem sans-serif;
+				text-align: center;
+				background: lavender;
+			}
+
+			/* ######################## 1. Kasuta vh ühikut, et teha terve ekraanisuurune hero ehk päis ################ */
+			.fullscreen {
+				background: lightcoral;
+				height: 100vh;
+				width: 100vw;
+			}
+
+			/* 
+        > shorthandid: 
+            kasuta paddingute ja marginite jaoks ainult üherealist shorthandi
+            > kustuta centered-contaneri seest üleliigsed read ära. 
+            padding shorthand docs: https://developer.mozilla.org/en-US/docs/Web/CSS/padding
+
+        > border-box vs padding box https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing */
+			.fullscreen .container {
+				background: pink;
+				border: dashed rgb(255, 232, 235) 2px;
+				padding: 30px 0 30px 0;
+			}
+
+			.container {
+				margin: 0 auto;
+				width: 960px;
+				height: 100%;
+			}
+
+			/* ######################## 2. Aseta kaks div-i kõrvuti kasutades protsentidega ühikuid ################ */
+
+			/* pane protsentidega üksteise kõrvale asetatavate div-ide ümber asuvale div-ile kõrgus
+        */
+			.protsentidega {
+				height: 50vh;
+				/* kui kõrgust ei määra, siis protsentidega määratud parameetritel ei ole efekti, sest need saavad kõrguse parent elemendilt */
+			}
+
+			/* 
+        block, inline, inline-block (saab muuta CSSiga tüüpi)
+        > inline - elemendid lähevad üksteise järgi, ei saa määrata kõrgust ega laiust
+        > inline - läheb uuele reale, saab määrata kõrgust ja laiust
+        > inline-block - saab floatida üksteise järgi ritta, saab määrata kõrgust ja laiust
+        > word-spacing probleem -
+            Kui div läheb uuele reale, siis olgugi, et 50% + 50% peaks kõrvuti ära mahtuma
+            lähevad need uuele reale, kui html-is algavad need erinevatelt ridadelt.
+            Sellegipoolest me ei paranda seda praegusel juhul div-ide üksteise järgi kirjutamisega,
+            sest see teeks koodi halvasti loetavaks. 
+            parandada saab float:left / float: right abil.
+            Aga seda juhul kui nad on muudetud ümber pool-inline-pool-block elementideks.
+            ehk, et display:inline-block;
+        */
+
+			.protsentidega .col {
+				/* display: inline-block; */
+				float: left;
+				/* box-sizing: content-box; */
+				box-sizing: border-box;
+				width: 50%;
+				height: 50%;
+				/* lisa col elemendile ka border ja proovi, mis
+            juhtub kui border-box asemel on content-box
+            https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+            Siis arvutatakse kasti suurusele borderite ja paddingute suurused lisaks
+            See võib paigutust muuta ja div-id ei pruugi enam kõrvuti mahtuda
+            */
+				color: green;
+				border: 10px solid greenyellow;
+			}
+
+			.protsentidega .col-1-2 {
+				background: lightgoldenrodyellow;
+			}
+
+			.protsentidega .col-2-2 {
+				background: yellowgreen;
+			}
+
+			/*
+        Kasuta flex-i, et paigutada kõik flex div-i sees asetsevad .col-id kõrvuti.
+        https://developer.mozilla.org/en-US/docs/Web/CSS/flex
+        Proovi teha nii, et div-e saab juurde panna ja ära võtta
+        aga ikkagi mahutuvad nad ümbritseva .flex div-i sisse võrdselt.
+        */
+			.flex {
+				background: green;
+				color: white;
+				display: flex;
+				flex-direction: row;
+				justify-content: space-evenly;
+			}
+
+			.flex .col {
+				border: 10px solid greenyellow;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!-- üks fullscreen div, mis võtab enda alla kogu ekraani suuruse -->
+		<div class="fullscreen">
+			<div class="container">
+				<h1>Paigutamine</h1>
+				<p><i>Margin</i> - distants sama taseme elementide vahel.</p>
+				<p>
+					<i>Padding</i> - distants, polsterdus või õhk <i>parent</i> ja
+					<i>child</i> elementide vahel.
+				</p>
+			</div>
+		</div>
+
+		<!-- 2 div-i kõrvuti kasutades protsente ühikutena -->
+		<div class="protsentidega">
+			<div class="container">
+				<div class="col col-1-2">50%</div>
+				<div class="col col-2-2">50%</div>
+			</div>
+		</div>
+
+		<!-- 3 või rohkem kõrvuti -->
+		<div class="container">
+			<div class="flex">
+				<div class="col">1/5</div>
+				<div class="col">2/5</div>
+				<div class="col">3/5</div>
+				<div class="col">4/5</div>
+				<div class="col">5/5</div>
+			</div>
+		</div>
+	</body>
+</html>
